@@ -15,11 +15,11 @@
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
     "start:webpack": "webpack serve",
-    "build": "react-scripts build",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "build:webpack": "npx webpack",
     "build:wasm": "cargo build --target wasm32-unknown-unknown",
     "build:bindgen": "wasm-bindgen target/wasm32-unknown-unknown/debug/rusty_react.wasm --out-dir build",
-    "build:all": "yarn build:wasm && yarn build:bindgen && yarn build"
+    "build:all": "yarn build:wasm && yarn build:bindgen && yarn build:webpack"
   },
   "eslintConfig": {
     "extends": [
