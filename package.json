@@ -13,9 +13,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:webpack": "webpack server",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:webpack": "npx webpack",
+    "build:wasm": "cargo build --target wasm32-unknown-unknown",
+    "build:bindgen": "wasm-bindgen target/wasm32-unknown-unknown/debug/rusty_react.wasm --out-dir build",
+    "build:all": "yarn build:wasm && yarn build:bindgen && yarn build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +37,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   }
 }
